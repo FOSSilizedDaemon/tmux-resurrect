@@ -264,14 +264,18 @@ show_output() {
 }
 
 main() {
+	current_session=$(tmux display-message -p '#S')
+	
 	if supported_tmux_version_ok; then
-		if show_output; then
-			start_spinner "Saving..." "Tmux environment saved!"
-		fi
-		save_all
-		if show_output; then
-			stop_spinner
-			display_message "Tmux environment saved!"
+		if [[ "${current_session}" == "${target_session}" ]]; then
+			if show_output; then
+				start_spinner "Saving..." "Tmux environment saved!"
+			fi
+			save_all
+			if show_output; then
+				stop_spinner
+				display_message "Tmux environment saved!"
+			fi
 		fi
 	fi
 }
