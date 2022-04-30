@@ -22,6 +22,7 @@ restore_processes=""
 
 # Defines part of the user variable. Example usage:
 #   set -g @resurrect-strategy-vim "session"
+target_session="@resurrect-target-session"
 restore_process_strategy_option="@resurrect-strategy-"
 
 inline_strategy_token="->"
